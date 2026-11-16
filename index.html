@@ -83,10 +83,11 @@ p{margin:0}
 .hero h1{font-size:clamp(2.4rem,4.4vw,3.7rem);margin-top:22px;color:#fff}
 .hero .lead{font-size:1.15rem;color:rgba(255,255,255,.78);margin-top:24px;max-width:33em}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
-.hero-stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:40px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14)}
-.hero-stats strong{display:block;font-family:var(--serif);font-size:2rem;font-weight:600;color:#fff;line-height:1;white-space:nowrap}
+.hero-stats{display:grid;grid-template-columns:auto auto auto;justify-content:start;gap:36px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14)}
+.hero-stats span{display:block;line-height:1.4;margin-top:8px;white-space:nowrap}
+.hero-stats strong{display:block;font-family:var(--serif);font-size:1.6rem;font-weight:600;color:#fff;line-height:1;white-space:nowrap}
 .hero-stats span{font-size:.88rem;color:rgba(255,255,255,.65)}
-@media (max-width:520px){.hero-stats{grid-template-columns:repeat(3,1fr);gap:16px}.hero-stats strong{font-size:1.6rem}}
+@media (max-width:560px){.hero-stats{grid-template-columns:1fr;gap:18px}.hero-stats span{white-space:normal}}
 /* console */
 .console{background:linear-gradient(180deg,#14305E,#0E2650);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:26px;box-shadow:0 40px 80px -30px rgba(0,0,0,.65)}
 .console-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
@@ -356,7 +357,7 @@ footer .logo{color:#fff}
       <div class="hero-stats">
         <div><strong>5</strong><span data-i18n="hs1">unidades de negocio</span></div>
         <div><strong data-i18n="hs2v">EE.UU. y LATAM</strong><span data-i18n="hs2">presencia regional</span></div>
-        <div><strong>API-first</strong><span data-i18n="hs3">integración con sus sistemas</span></div>
+        <div><strong>API-first</strong><span data-i18n="hs3">conectado a sus sistemas</span></div>
       </div>
     </div>
 
@@ -719,7 +720,7 @@ footer .logo{color:#fff}
     heroTitle:"Financial and enterprise technology for the Americas.",
     heroLead:"We build lending, payments and collections platforms, test transactional systems with CoreTestX, implement ERP and Salesforce, and add expert teams to your operation across the United States and Latin America.",
     heroCta1:"Schedule a meeting", heroCta2:"Explore our solutions",
-    cf1:"Time to decision", cf2:"Events", hs1:"business units", hs2v:"U.S. & LATAM", hs2:"regional presence", hs3:"integration with your systems",     unLabel:"Business units", unTitle:"Five ways to work with us.",
+    cf1:"Time to decision", cf2:"Events", hs1:"business units", hs2v:"U.S. & LATAM", hs2:"regional presence", hs3:"connects to your systems",     unLabel:"Business units", unTitle:"Five ways to work with us.",
     unLead:"Hire a single unit or combine them. All of them share the same team, the same experience with critical systems and the same quality standard.",
     u1t:"Fintech platforms", u1p:"Lending, automatic debit, payments, risk and data intelligence.", more:"See platforms",
     u2p:"QA testing for transactional systems and payment ecosystems.", more2:"See CoreTestX",
