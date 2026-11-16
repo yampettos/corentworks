@@ -1,87 +1,949 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CORENT WORKS</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 80px;
-      background: #ffffff;
-      color: #111;
-    }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
-    h2 {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 24px;
-      color: #333;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-    .pillars {
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #555;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corentworks — Tecnología financiera y empresarial</title>
+<meta name="description" content="Corentworks desarrolla plataformas de crédito, pagos y cobranzas, CoreTestX para pruebas transaccionales, implementaciones de ERP y Salesforce, y equipos de tecnología para empresas en Estados Unidos y Latinoamérica.">
+<meta property="og:title" content="Corentworks — Core systems, delivered right.">
+<meta property="og:description" content="Plataformas fintech, CoreTestX, ERP, Salesforce y equipos de tecnología para bancos, fintech y empresas.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1F3A;
+  --navy-2:#132C50;
+  --blue:#1F4FD1;
+  --blue-soft:#EAF0FD;
+  --green:#0F8B6F;
+  --green-soft:#E3F3EE;
+  --gold:#C9962B;
+  --paper:#F5F7FA;
+  --white:#FFFFFF;
+  --ink:#0B1F3A;
+  --text:#2E3A4D;
+  --slate:#5C6A80;
+  --line:#DDE3EB;
+  --line-dark:rgba(255,255,255,.14);
+  --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans:'Public Sans', 'Segoe UI', system-ui, sans-serif;
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.01em;text-wrap:balance}
+h4{font-family:var(--sans);font-weight:600;color:var(--ink);margin:0;font-size:1.02rem}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+.nav.scrolled,.nav.open{background:rgba(11,31,58,.97);backdrop-filter:blur(8px);border-bottom-color:rgba(255,255,255,.1)}
+.nav-in{display:flex;align-items:center;gap:30px;height:80px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo svg{width:32px;height:32px}
+.logo span{font-family:var(--serif);font-size:1.32rem;font-weight:600;letter-spacing:.005em}
+.nav-links{display:flex;gap:28px;margin:0 0 0 auto;list-style:none;padding:0}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.8);font-size:.94rem;font-weight:500;padding:6px 0;border-bottom:2px solid transparent}
+.nav-links a:hover{color:#fff;border-bottom-color:#7FA2FF}
+.lang{display:flex;gap:2px;border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:2px}
+.lang button{all:unset;cursor:pointer;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);padding:4px 10px;border-radius:3px}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:.95rem;text-decoration:none;border-radius:4px;padding:14px 26px;border:0;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:#1A43B3}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
+.nav .btn{padding:10px 18px;font-size:.9rem}
+.menu-btn{all:unset;display:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto}
+@media (max-width:1040px){
+  .nav-links,.nav .btn{display:none}
+  .menu-btn{display:block}
+  .nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:80px;left:0;right:0;background:var(--navy);padding:14px 32px 30px;gap:14px;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+
+/* HERO */
+.hero{background:var(--navy);color:#fff;padding:160px 0 110px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 75% 65% at 70% 40%,#000 25%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 75% 65% at 70% 40%,#000 25%,transparent 78%)}
+.hero::after{content:"";position:absolute;width:720px;height:720px;right:-160px;top:-200px;background:radial-gradient(circle,rgba(31,79,209,.35),transparent 65%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 1fr;gap:64px;align-items:center}
+.kicker{font-size:.95rem;font-weight:600;color:#7FD8BE;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:28px;height:2px;background:#7FD8BE}
+.hero h1{font-size:clamp(2.4rem,4.4vw,3.7rem);margin-top:22px;color:#fff}
+.hero .lead{font-size:1.15rem;color:rgba(255,255,255,.78);margin-top:24px;max-width:33em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:40px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14)}
+.hero-stats strong{display:block;font-family:var(--serif);font-size:2rem;font-weight:600;color:#fff;line-height:1;white-space:nowrap}
+.hero-stats span{font-size:.88rem;color:rgba(255,255,255,.65)}
+@media (max-width:520px){.hero-stats{grid-template-columns:repeat(3,1fr);gap:16px}.hero-stats strong{font-size:1.6rem}}
+/* console */
+.console{background:linear-gradient(180deg,#14305E,#0E2650);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:26px;box-shadow:0 40px 80px -30px rgba(0,0,0,.65)}
+.console-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.loan-id{font-size:.8rem;color:rgba(255,255,255,.55)}
+.loan-title{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-top:2px}
+.loan-amt{text-align:right}
+.loan-amt strong{font-family:var(--serif);font-size:1.6rem;font-weight:600;display:block;font-variant-numeric:tabular-nums}
+.loan-amt span{font-size:.78rem;color:rgba(255,255,255,.55)}
+.rail{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:24px 0 20px}
+.stage{position:relative;padding-top:18px;font-size:.78rem;color:rgba(255,255,255,.45);transition:color .4s}
+.stage::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;border-radius:3px;background:rgba(255,255,255,.12);transition:background .4s}
+.stage.done{color:rgba(255,255,255,.8)}
+.stage.done::before{background:#5B82F0}
+.stage.active{color:#fff;font-weight:600}
+.stage.active::before{background:#4FD1A5;box-shadow:0 0 16px rgba(79,209,165,.7)}
+.log{list-style:none;margin:0;padding:0;height:232px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;mask-image:linear-gradient(to bottom,transparent,#000 30%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%)}
+.log li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:10px 14px;font-size:.88rem;animation:logIn .5s cubic-bezier(.2,.7,.2,1)}
+.log .dot{width:9px;height:9px;border-radius:50%;background:#4FD1A5}
+.log .dot.warn{background:#E2B24F}
+.log time{font-size:.75rem;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+@keyframes logIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.console-foot{display:flex;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;color:rgba(255,255,255,.6)}
+.console-foot b{color:#fff;font-variant-numeric:tabular-nums}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:124px}.hero-stats{gap:28px}}
+
+/* SECTIONS */
+.sec{padding:112px 0}
+.sec-paper{background:var(--paper)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+.sec-head p{color:var(--slate);font-size:1.08rem}
+.sec-head.single{grid-template-columns:1fr;max-width:760px}
+.label{display:block;font-size:.92rem;font-weight:600;color:var(--blue);margin-bottom:14px}
+@media (max-width:900px){.sec-head{grid-template-columns:1fr;gap:16px}}
+
+/* business units */
+.units{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:#fff}
+.unit{padding:32px 26px 30px;border-left:1px solid var(--line);text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:background .25s}
+.unit:first-child{border-left:0}
+.unit:hover{background:var(--paper)}
+.unit .ico{width:44px;height:44px;border-radius:6px;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue)}
+.unit .ico svg{width:24px;height:24px}
+.unit:nth-child(2) .ico{background:var(--green-soft);color:var(--green)}
+.unit h3{font-size:1.32rem}
+.unit p{font-size:.94rem;color:var(--slate)}
+.unit .more{margin-top:auto;padding-top:10px;font-size:.88rem;font-weight:600;color:var(--blue)}
+@media (max-width:1100px){.units{grid-template-columns:repeat(2,1fr)}.unit{border-left:0;border-top:1px solid var(--line)}.unit:nth-child(-n+2){border-top:0}.unit:nth-child(even){border-left:1px solid var(--line)}}
+@media (max-width:620px){.units{grid-template-columns:1fr}.unit:nth-child(even){border-left:0}.unit:nth-child(2){border-top:1px solid var(--line)}}
+
+/* lifecycle */
+.cycle{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
+.cycle-tabs{display:flex;flex-direction:column;border:1px solid var(--line);background:#fff}
+.ctab{all:unset;cursor:pointer;display:grid;grid-template-columns:48px 1fr;align-items:center;padding:18px 20px 18px 0;border-top:1px solid var(--line);border-left:3px solid transparent;transition:background .2s}
+.ctab:first-child{border-top:0}
+.ctab .num{text-align:center;font-family:var(--serif);font-size:1.15rem;color:var(--slate)}
+.ctab strong{display:block;font-weight:600;color:var(--ink)}
+.ctab small{font-size:.86rem;color:var(--slate)}
+.ctab:hover{background:var(--paper)}
+.ctab[aria-selected="true"]{border-left-color:var(--blue);background:var(--blue-soft)}
+.ctab[aria-selected="true"] .num{color:var(--blue)}
+.cpanel{background:#fff;border:1px solid var(--line);padding:44px 48px;min-height:430px}
+.cpanel[hidden]{display:none}
+.cpanel.show{animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cpanel h3{font-size:1.9rem}
+.cpanel > p{color:var(--slate);margin-top:12px;max-width:40em}
+.mods{display:grid;grid-template-columns:1fr 1fr;gap:26px 36px;margin-top:32px}
+.mod{padding-left:18px;border-left:2px solid var(--line)}
+.mod p{color:var(--slate);font-size:.94rem;margin-top:4px}
+.soon{display:inline-block;margin-left:8px;font-size:.72rem;font-weight:600;color:var(--green);background:var(--green-soft);padding:2px 8px;border-radius:3px;vertical-align:2px}
+@media (max-width:980px){.cycle{grid-template-columns:1fr}.cycle-tabs{flex-direction:row;overflow-x:auto}.ctab{border-top:0;border-left:0;border-bottom:3px solid transparent;grid-template-columns:34px auto;padding:14px 18px 14px 0;white-space:nowrap}.ctab[aria-selected="true"]{border-bottom-color:var(--blue)}.ctab small{display:none}.cpanel{padding:28px}.mods{grid-template-columns:1fr}}
+
+/* debit */
+.debit{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:96px;padding-top:80px;border-top:1px solid var(--line)}
+.debit h3{font-size:clamp(1.7rem,3vw,2.3rem)}
+.debit .intro{color:var(--slate);margin-top:14px}
+.flow3{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:20px}
+.flow3 li{display:grid;grid-template-columns:40px 1fr;gap:16px}
+.flow3 .k{width:40px;height:40px;border:1.5px solid var(--blue);border-radius:50%;color:var(--blue);display:grid;place-items:center;font-family:var(--serif);font-weight:600}
+.flow3 p{color:var(--slate);font-size:.95rem;margin-top:2px}
+.states{background:var(--navy);padding:34px;color:#fff;border-radius:4px}
+.states-title{font-size:.88rem;color:rgba(255,255,255,.65)}
+.plan{margin-top:18px;display:grid;gap:10px}
+.inst{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:12px 16px;background:rgba(255,255,255,.06);font-size:.9rem;border-radius:3px}
+.inst .n{color:rgba(255,255,255,.65);white-space:nowrap;min-width:5.5em}
+.bar{height:5px;background:rgba(255,255,255,.14);overflow:hidden;border-radius:3px}
+.bar i{display:block;height:100%;width:0;background:#4FD1A5;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.tag{font-size:.74rem;font-weight:600;padding:3px 9px;border-radius:3px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);white-space:nowrap}
+.tag.ok{background:rgba(79,209,165,.18);color:#8FE8C8}
+.tag.retry{background:rgba(201,150,43,.25);color:#F0CB7A}
+.states-note{margin-top:20px;font-size:.88rem;color:rgba(255,255,255,.68)}
+@media (max-width:980px){.debit{grid-template-columns:1fr;gap:44px}}
+
+/* CoreTestX */
+.ctx{background:var(--navy);color:rgba(255,255,255,.82)}
+.ctx h2,.ctx h3,.ctx h4{color:#fff}
+.ctx .label{color:#7FD8BE}
+.ctx .sec-head p{color:rgba(255,255,255,.75)}
+.ctx-brand{font-family:var(--serif);font-size:1rem;color:rgba(255,255,255,.6);margin-top:10px}
+.ctx-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.benefits{display:grid;gap:0;border-top:1px solid var(--line-dark)}
+.benefits div{padding:24px 0;border-bottom:1px solid var(--line-dark)}
+.benefits p{margin-top:6px;font-size:.96rem;color:rgba(255,255,255,.72)}
+.suite{background:#fff;color:var(--text);border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.suite-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;background:var(--paper);border-bottom:1px solid var(--line);font-size:.86rem}
+.suite-head strong{color:var(--ink)}
+.suite-head .run{color:var(--green);font-weight:600}
+.suite ul{list-style:none;margin:0;padding:8px 0}
+.suite li{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:10px 22px;font-size:.9rem;border-bottom:1px solid #EEF1F5}
+.suite li:last-child{border-bottom:0}
+.suite .st{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);transition:all .3s}
+.suite li.pass .st{background:var(--green);border-color:var(--green)}
+.suite li.run .st{border-color:var(--blue);border-top-color:transparent;animation:spin .8s linear infinite}
+.suite li code{font-family:var(--sans);font-size:.78rem;color:var(--slate);background:var(--paper);padding:2px 7px;border-radius:3px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.suite-foot{display:flex;justify-content:space-between;padding:14px 22px;border-top:1px solid var(--line);font-size:.85rem;color:var(--slate)}
+.suite-foot b{color:var(--ink);font-variant-numeric:tabular-nums}
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:80px;padding-top:44px;border-top:1px solid var(--line-dark)}
+.caps p{font-size:.95rem;margin-top:8px;color:rgba(255,255,255,.72)}
+.protocols{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.protocols span{font-size:.8rem;font-weight:600;border:1px solid var(--line-dark);padding:4px 10px;border-radius:3px;color:#fff}
+@media (max-width:980px){.ctx-grid{grid-template-columns:1fr;gap:44px}.caps{grid-template-columns:1fr}}
+
+/* enterprise */
+.ent{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.ent-card{background:#fff;border:1px solid var(--line);padding:40px}
+.ent-card h3{font-size:1.75rem}
+.ent-card > p{color:var(--slate);margin-top:12px}
+.ent-card ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.ent-card li{padding-left:22px;position:relative;font-size:.96rem}
+.ent-card li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--blue)}
+.vendors{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.vendors span{font-weight:600;font-size:.88rem;color:var(--ink);background:var(--paper);padding:6px 12px;border-radius:3px}
+.bridge{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:18px;background:var(--navy);color:#fff;padding:30px 36px;border-radius:4px}
+.bridge div{text-align:center}
+.bridge strong{display:block;font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.bridge small{color:rgba(255,255,255,.65);font-size:.85rem}
+.bridge .arrow{width:60px;height:2px;background:linear-gradient(90deg,transparent,#7FD8BE,transparent);position:relative}
+.bridge .core{border:1px solid rgba(255,255,255,.3);padding:12px 18px;border-radius:4px}
+.bridge-note{grid-column:1/-1;color:var(--slate);font-size:.95rem;text-align:center}
+@media (max-width:900px){.ent{grid-template-columns:1fr}.bridge{grid-template-columns:1fr;text-align:center}.bridge .arrow{width:2px;height:28px;margin:0 auto;background:linear-gradient(180deg,transparent,#7FD8BE,transparent)}}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc div{padding:32px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc h3{font-size:1.25rem}
+.svc p{color:var(--slate);margin-top:10px;font-size:.96rem}
+@media (max-width:980px){.svc{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.svc{grid-template-columns:1fr}}
+
+/* teams */
+.teams-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+.big{font-family:var(--serif);font-weight:600;font-size:clamp(5.5rem,11vw,8.5rem);line-height:.9;color:var(--blue)}
+.big-cap{font-size:1.12rem;margin-top:14px;max-width:22em}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.roles span{font-size:.85rem;border:1px solid var(--line);background:#fff;padding:5px 12px;border-radius:3px}
+.models{border-top:1px solid var(--line)}
+.model{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.model h3{font-size:1.25rem}
+.model p{color:var(--slate)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:64px}
+.why div{border-top:2px solid var(--green);padding-top:18px}
+.why p{color:var(--slate);font-size:.95rem;margin-top:6px}
+@media (max-width:980px){.teams-grid{grid-template-columns:1fr;gap:44px}.model{grid-template-columns:1fr;gap:6px}.why{grid-template-columns:1fr}}
+
+/* industries */
+.ind{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);background:#fff}
+.ind div{padding:28px 24px;border-left:1px solid var(--line)}
+.ind div:first-child{border-left:0}
+.ind h3{font-size:1.15rem}
+.ind p{color:var(--slate);font-size:.9rem;margin-top:8px}
+@media (max-width:1080px){.ind{grid-template-columns:1fr 1fr}.ind div{border-left:0;border-top:1px solid var(--line)}}
+@media (max-width:560px){.ind{grid-template-columns:1fr}}
+
+/* how */
+.how{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.how h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+.how .intro{color:var(--slate);margin-top:18px;font-size:1.08rem}
+.steps{list-style:none;padding:0;margin:0;counter-reset:s;border-left:1px solid var(--line)}
+.steps li{position:relative;padding:0 0 34px 40px}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:-17px;top:-4px;width:34px;height:34px;border-radius:50%;background:#fff;border:1.5px solid var(--blue);color:var(--blue);display:grid;place-items:center;font-family:var(--serif);font-weight:600}
+.steps h3{font-size:1.25rem}
+.steps p{color:var(--slate);margin-top:6px;font-size:.96rem}
+@media (max-width:900px){.how{grid-template-columns:1fr;gap:44px}}
+
+/* contact */
+.contact{background:var(--navy);color:rgba(255,255,255,.8)}
+.contact h2{color:#fff;font-size:clamp(2.1rem,4vw,3.1rem)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px}
+.contact .intro{margin-top:18px;font-size:1.08rem}
+.mail{display:inline-block;margin-top:30px;font-family:var(--serif);font-size:1.45rem;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5)}
+.mail:hover{border-bottom-color:#fff}
+.offices{margin-top:36px;display:grid;gap:6px;font-size:.95rem}
+.form{background:#fff;color:var(--text);padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px;border-radius:4px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.88rem;font-weight:600;color:var(--ink)}
+.field input,.field select,.field textarea{font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:3px;padding:12px 14px}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.hp{position:absolute;left:-9999px}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.status{font-size:.95rem}
+.status.ok{color:var(--green)}
+.status.err{color:#B3261E}
+@media (max-width:980px){.contact-grid{grid-template-columns:1fr;gap:44px}.form{grid-template-columns:1fr;padding:26px}}
+
+footer{background:#081629;color:rgba(255,255,255,.65);padding:60px 0 36px;font-size:.92rem}
+footer .logo{color:#fff}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.foot h4{color:#fff;margin-bottom:14px;font-size:.95rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.foot .tagline{margin-top:16px;font-family:var(--serif);font-size:1.05rem;color:rgba(255,255,255,.8)}
+.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:52px;padding-top:22px;border-top:1px solid var(--line-dark);font-size:.84rem}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+
+.rise{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-  <h1>CORENT WORKS</h1>
-
-  <h2>Core systems, delivered right.</h2>
-
-  <p>
-    We help organizations design, build, and evolve core systems across banking,
-    product, and enterprise platforms.
-  </p>
-
-  <div class="pillars">
-    Product · Process · Technology
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Corentworks">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="5" width="54" height="54" rx="8" fill="#132C50"/><rect x="16" y="16" width="32" height="32" rx="4" fill="none" stroke="#5B82F0" stroke-width="5"/><rect x="27" y="27" width="10" height="10" rx="2" fill="#C9962B"/></svg>
+      <span>Corentworks</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#fintech" data-i18n="nav1">Fintech</a></li>
+      <li><a href="#coretestx">CoreTestX</a></li>
+      <li><a href="#empresas" data-i18n="nav2">ERP y Salesforce</a></li>
+      <li><a href="#servicios" data-i18n="nav3">Servicios</a></li>
+      <li><a href="#equipos" data-i18n="nav4">Equipos</a></li>
+      <li><a href="#como" data-i18n="nav5">Cómo trabajamos</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-primary" href="#contacto" data-i18n="navCta">Contacto</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menú">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
+</header>
 
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Core systems, delivered right.</p>
+      <h1 data-i18n="heroTitle">Tecnología financiera y empresarial para las Américas.</h1>
+      <p class="lead" data-i18n="heroLead">Desarrollamos plataformas de crédito, pagos y cobranzas, probamos sistemas transaccionales con CoreTestX, implementamos ERP y Salesforce, y sumamos equipos expertos a su operación en Estados Unidos y Latinoamérica.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contacto" data-i18n="heroCta1">Agendar una reunión</a>
+        <a class="btn btn-ghost" href="#unidades" data-i18n="heroCta2">Conocer nuestras soluciones</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>5</strong><span data-i18n="hs1">unidades de negocio</span></div>
+        <div><strong>20</strong><span data-i18n="hs2">especialistas</span></div>
+        <div><strong>ES · EN</strong><span data-i18n="hs3">atención bilingüe</span></div>
+      </div>
+    </div>
+
+    <div class="console" aria-label="Ejemplo animado del ciclo de un crédito">
+      <div class="console-head">
+        <div>
+          <div class="loan-id" id="loanId">Solicitud 48213</div>
+          <div class="loan-title" id="loanTitle">Línea de crédito con garantía</div>
+        </div>
+        <div class="loan-amt"><strong>USD 85,000</strong><span id="loanTerm">36 cuotas</span></div>
+      </div>
+      <div class="rail" id="rail" aria-hidden="true">
+        <div class="stage" data-i18n="st1">Originar</div>
+        <div class="stage" data-i18n="st2">Decidir</div>
+        <div class="stage" data-i18n="st3">Desembolsar</div>
+        <div class="stage" data-i18n="st4">Cobrar</div>
+        <div class="stage" data-i18n="st5">Analizar</div>
+      </div>
+      <ul class="log" id="log" aria-live="off"></ul>
+      <div class="console-foot">
+        <span><span data-i18n="cf1">Tiempo hasta la decisión</span> <b id="clock">00:00</b></span>
+        <span><span data-i18n="cf2">Eventos</span> <b id="evCount">0</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS UNITS -->
+<section class="sec" id="unidades">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <div><span class="label" data-i18n="unLabel">Unidades de negocio</span><h2 data-i18n="unTitle">Cinco formas de trabajar con nosotros.</h2></div>
+      <p data-i18n="unLead">Puede contratar una sola unidad o combinarlas. Todas comparten el mismo equipo, la misma experiencia en sistemas críticos y el mismo estándar de calidad.</p>
+    </div>
+    <div class="units">
+      <a class="unit" href="#fintech">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>
+        <h3 data-i18n="u1t">Plataformas fintech</h3>
+        <p data-i18n="u1p">Crédito, débito automático, pagos, riesgo e inteligencia de datos.</p>
+        <span class="more" data-i18n="more">Ver plataformas</span>
+      </a>
+      <a class="unit" href="#coretestx">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 14h9"/></svg></span>
+        <h3>CoreTestX</h3>
+        <p data-i18n="u2p">Pruebas QA de sistemas transaccionales y ecosistemas de pago.</p>
+        <span class="more" data-i18n="more2">Ver CoreTestX</span>
+      </a>
+      <a class="unit" href="#empresas">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>
+        <h3 data-i18n="u3t">ERP</h3>
+        <p data-i18n="u3p">SAP, Oracle, Odoo y Microsoft Dynamics: implementación y soporte.</p>
+        <span class="more" data-i18n="more3">Ver ERP</span>
+      </a>
+      <a class="unit" href="#empresas">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4 4 0 0 1-.6-7.95A5 5 0 0 1 16 8.5a3.5 3.5 0 0 1 1 6.9V18H7z"/></svg></span>
+        <h3>Salesforce</h3>
+        <p data-i18n="u4p">Consultoría, automatizaciones e integraciones de CRM.</p>
+        <span class="more" data-i18n="more4">Ver Salesforce</span>
+      </a>
+      <a class="unit" href="#equipos">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5M15 14.6c2.6-.3 5 1.1 5.6 4.4"/></svg></span>
+        <h3 data-i18n="u5t">Equipos y servicios</h3>
+        <p data-i18n="u5p">Desarrollo a medida, modernización y especialistas nearshore.</p>
+        <span class="more" data-i18n="more5">Ver equipos</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINTECH -->
+<section class="sec sec-paper" id="fintech">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <div><span class="label" data-i18n="fxLabel">Plataformas fintech</span><h2 data-i18n="platTitle">Todo el ciclo del crédito y los pagos, en módulos.</h2></div>
+      <p data-i18n="platLead">Implemente un módulo o la plataforma completa, conectada por API a los sistemas que ya tiene. Seleccione una etapa para ver sus capacidades.</p>
+    </div>
+    <div class="cycle">
+      <div class="cycle-tabs" role="tablist" aria-label="Etapas">
+        <button class="ctab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="num">1</span><span><strong data-i18n="st1">Originar</strong><small data-i18n="t1s">Solicitud, identidad e ingresos</small></span></button>
+        <button class="ctab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="num">2</span><span><strong data-i18n="st2">Decidir</strong><small data-i18n="t2s">Scoring, fraude y límites</small></span></button>
+        <button class="ctab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="num">3</span><span><strong data-i18n="st3">Desembolsar</strong><small data-i18n="t3s">Pagos y movimiento de dinero</small></span></button>
+        <button class="ctab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="num">4</span><span><strong data-i18n="st4">Cobrar</strong><small data-i18n="t4s">Débito automático y mora</small></span></button>
+        <button class="ctab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="num">5</span><span><strong data-i18n="st5">Analizar</strong><small data-i18n="t5s">IA, reportes y auditoría</small></span></button>
+      </div>
+      <div>
+        <div class="cpanel show" role="tabpanel" id="p1" aria-labelledby="t1">
+          <h3 data-i18n="p1t">Originación digital</h3>
+          <p data-i18n="p1p">Sus clientes solicitan en minutos y su equipo recibe expedientes completos, verificados y listos para decidir.</p>
+          <div class="mods">
+            <div class="mod"><h4 data-i18n="p1m1">Solicitud y onboarding</h4><p data-i18n="p1m1p">Formularios digitales con marca propia, para web y app.</p></div>
+            <div class="mod"><h4 data-i18n="p1m2">Identidad y KYC</h4><p data-i18n="p1m2p">Validación de identidad y documentos con los proveedores que elija.</p></div>
+            <div class="mod"><h4 data-i18n="p1m3">Verificación de ingresos</h4><p data-i18n="p1m3p">Datos bancarios y laborales incorporados al expediente de forma automática.</p></div>
+            <div class="mod"><h4 data-i18n="p1m4">Crédito hipotecario y HELOC</h4><p data-i18n="p1m4p">Flujos para préstamos con garantía: valuación, título y cierre digital.</p></div>
+          </div>
+        </div>
+        <div class="cpanel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+          <h3 data-i18n="p2t">Decisión y riesgo</h3>
+          <p data-i18n="p2p">Reglas configurables y modelos explicables que aprueban, rechazan o derivan a revisión, con el motivo de cada decisión.</p>
+          <div class="mods">
+            <div class="mod"><h4 data-i18n="p2m1">Scoring y predicción de mora</h4><p data-i18n="p2m1p">Califica a cada cliente según su comportamiento de pago y anticipa el riesgo de impago.</p></div>
+            <div class="mod"><h4 data-i18n="p2m2">Antifraude</h4><p data-i18n="p2m2p">Señales de comportamiento, listas de riesgo habilitadas y modelos probabilísticos en tiempo real.</p></div>
+            <div class="mod"><h4 data-i18n="p2m3">Transaction Limiter</h4><p data-i18n="p2m3p">Límites por monto, frecuencia, canal o segmento, verificados antes de cada operación.</p></div>
+            <div class="mod"><h4 data-i18n="p2m4">Motor de reglas</h4><p data-i18n="p2m4p">Cuotas, tasas, comisiones, descuentos y beneficios definidos por el negocio.</p></div>
+          </div>
+        </div>
+        <div class="cpanel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+          <h3 data-i18n="p3t">Pagos y movimiento de dinero</h3>
+          <p data-i18n="p3p">Desembolsos, transferencias y pagos coordinados por un orquestador que gestiona estados, reintentos y conciliación.</p>
+          <div class="mods">
+            <div class="mod"><h4 data-i18n="p3m1">Orquestador de transacciones</h4><p data-i18n="p3m1p">Una capa común entre canales y proveedores. Cambie de proveedor sin modificar el canal.</p></div>
+            <div class="mod"><h4 data-i18n="p3m2">Cuentas y transferencias</h4><p data-i18n="p3m2p">Saldos, movimientos y transferencias con trazabilidad de punta a punta.</p></div>
+            <div class="mod"><h4 data-i18n="p3m3">Pagos de servicios y tarjetas</h4><p data-i18n="p3m3p">Pago de facturas, recargas y emisión y procesamiento de tarjetas prepago y débito.</p></div>
+            <div class="mod"><h4><span data-i18n="p3m4">Remesas</span><span class="soon" data-i18n="soon">Próximamente</span></h4><p data-i18n="p3m4p">Envío y recepción de dinero con proveedores internacionales.</p></div>
+          </div>
+        </div>
+        <div class="cpanel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+          <h3 data-i18n="p4t">Cobranza automática</h3>
+          <p data-i18n="p4p">Planes de cuotas que se cobran automáticamente, se reintentan sin duplicar cobros y notifican a tiempo.</p>
+          <div class="mods">
+            <div class="mod"><h4 data-i18n="p4m1">Débito y crédito automático</h4><p data-i18n="p4m1p">Suscripciones y cobros recurrentes o en tiempo real, en varias monedas.</p></div>
+            <div class="mod"><h4 data-i18n="p4m2">Mora y reintentos</h4><p data-i18n="p4m2p">Días de gracia, penalidades configurables y reintentos durante el día.</p></div>
+            <div class="mod"><h4 data-i18n="p4m3">Notificaciones y reclamos</h4><p data-i18n="p4m3p">Avisos por push y email, y gestión de reclamos por cuota.</p></div>
+            <div class="mod"><h4 data-i18n="p4m4">Carga masiva de planes</h4><p data-i18n="p4m4p">Miles de planes desde Excel, con validación y control de duplicados.</p></div>
+          </div>
+        </div>
+        <div class="cpanel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+          <h3 data-i18n="p5t">Inteligencia de datos con IA</h3>
+          <p data-i18n="p5p">Ventas, cobros y productos enriquecidos con contexto de mercado y convertidos en reportes y alertas con evidencia trazable.</p>
+          <div class="mods">
+            <div class="mod"><h4 data-i18n="p5m1">Reportes ejecutivos</h4><p data-i18n="p5m1p">Qué cambió, por qué y en qué segmentos, explicado en lenguaje claro.</p></div>
+            <div class="mod"><h4 data-i18n="p5m2">Detección de anomalías</h4><p data-i18n="p5m2p">Alertas sobre ventas, precios, inventario o pagos fuera de patrón.</p></div>
+            <div class="mod"><h4 data-i18n="p5m3">Auditoría asistida</h4><p data-i18n="p5m3p">Excepciones priorizadas con la evidencia lista para revisión humana.</p></div>
+            <div class="mod"><h4 data-i18n="p5m4">Consultas en lenguaje natural</h4><p data-i18n="p5m4p">Preguntas de negocio respondidas con datos, filtros y fuentes.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="debit" id="debito">
+      <div>
+        <h3 data-i18n="debTitle">Débito automático que cobra a tiempo y nunca cobra dos veces.</h3>
+        <p class="intro" data-i18n="debLead">Para bancos y entidades financieras que cobran préstamos, tarjetas y servicios en cuotas.</p>
+        <ol class="flow3">
+          <li><span class="k">1</span><div><h4 data-i18n="d1t">Captación y validación</h4><p data-i18n="d1p">Alta de planes por API o archivo, con cuentas y clientes validados antes del primer cobro.</p></div></li>
+          <li><span class="k">2</span><div><h4 data-i18n="d2t">Procesamiento y recuperación</h4><p data-i18n="d2p">Cobro diario, reintentos automáticos y gestión de mora con reglas por producto.</p></div></li>
+          <li><span class="k">3</span><div><h4 data-i18n="d3t">Métricas integradas</h4><p data-i18n="d3p">Cuotas cobradas, pendientes y en mora por día, producto y empresa, exportables a Excel.</p></div></li>
+        </ol>
+      </div>
+      <div class="states" id="plan">
+        <div class="states-title" data-i18n="planTitle">Plan 7502608 — préstamo personal</div>
+        <div class="plan">
+          <div class="inst"><span class="n" data-i18n="i1">Cuota 1</span><span class="bar"><i data-w="100"></i></span><span class="tag ok" data-i18n="paid">Cobrada</span></div>
+          <div class="inst"><span class="n" data-i18n="i2">Cuota 2</span><span class="bar"><i data-w="100"></i></span><span class="tag ok" data-i18n="paid">Cobrada</span></div>
+          <div class="inst"><span class="n" data-i18n="i3">Cuota 3</span><span class="bar"><i data-w="62"></i></span><span class="tag retry" data-i18n="retry">Reintento 2</span></div>
+          <div class="inst"><span class="n" data-i18n="i4">Cuota 4</span><span class="bar"><i data-w="0"></i></span><span class="tag" data-i18n="pending">Pendiente</span></div>
+        </div>
+        <p class="states-note" data-i18n="planNote">Si la cuenta no tiene saldo, la cuota queda pendiente y se reintenta. El plan entra en mora solo cuando vencen los días de gracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORETESTX -->
+<section class="sec ctx" id="coretestx">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <div><span class="label">CoreTestX by Corentworks</span><h2 data-i18n="cxTitle">Testing profundo del núcleo transaccional.</h2></div>
+      <p data-i18n="cxLead">CoreTestX es nuestra plataforma para pruebas QA de sistemas transaccionales y ecosistemas de pago críticos. Permite crear, automatizar y ejecutar pruebas complejas simulando múltiples canales y escenarios reales, para llegar a producción antes y con menos riesgo.</p>
+    </div>
+    <div class="ctx-grid">
+      <div class="benefits">
+        <div><h4 data-i18n="cb1t">Reducción de costos operativos</h4><p data-i18n="cb1p">Ejecute pruebas de forma independiente, reutilice marcos de prueba transaccionales y detecte errores antes de que lleguen a producción.</p></div>
+        <div><h4 data-i18n="cb2t">Mayor agilidad en el desarrollo</h4><p data-i18n="cb2p">Automatice las pruebas QA y acorte los ciclos de desarrollo para liberar valor de negocio en menos tiempo.</p></div>
+        <div><h4 data-i18n="cb3t">Mayor eficiencia</h4><p data-i18n="cb3p">Aumente la productividad de sus equipos con menos recursos, manteniendo altos estándares de calidad en la experiencia de pago.</p></div>
+        <div><h4 data-i18n="cb4t">Pruebas de extremo a extremo</h4><p data-i18n="cb4p">Cubre cualquier ecosistema de pagos o switch transaccional sin construir entornos de prueba propios.</p></div>
+      </div>
+      <div class="suite" aria-label="Ejemplo de ejecución de pruebas">
+        <div class="suite-head"><strong data-i18n="suiteName">Suite: autorizaciones POS y ATM</strong><span class="run" id="suiteState" data-i18n="running">Ejecutando</span></div>
+        <ul id="suite">
+          <li><span class="st"></span><span data-i18n="tc1">Compra POS con chip EMV</span><code>ISO 8583</code></li>
+          <li><span class="st"></span><span data-i18n="tc2">Retiro ATM con saldo insuficiente</span><code>ISO 8583</code></li>
+          <li><span class="st"></span><span data-i18n="tc3">Reverso por timeout del autorizador</span><code>ISO 8583</code></li>
+          <li><span class="st"></span><span data-i18n="tc4">Transferencia inmediata</span><code>ISO 20022</code></li>
+          <li><span class="st"></span><span data-i18n="tc5">Datos de tarjeta en TLV</span><code>TLV</code></li>
+          <li><span class="st"></span><span data-i18n="tc6">Carga: 500 transacciones por segundo</span><code data-i18n="perf">Desempeño</code></li>
+        </ul>
+        <div class="suite-foot"><span><span data-i18n="passed">Aprobadas</span> <b id="passN">0</b>/6</span><span><span data-i18n="dur">Duración</span> <b id="durN">0.0 s</b></span></div>
+      </div>
+    </div>
+    <div class="caps">
+      <div><h4 data-i18n="cc1t">Simulación de canales</h4><p data-i18n="cc1p">ATM, POS, tarjetas EMV y redes de pago internacionales, con los estándares de mensajería de la industria.</p><div class="protocols"><span>ISO 8583</span><span>ISO 20022</span><span>TLV</span><span>XML</span></div></div>
+      <div><h4 data-i18n="cc2t">Simulación de autorizadores</h4><p data-i18n="cc2p">Redes de tarjetas, cores bancarios y procesadores locales e internacionales simulados, para un ecosistema de pruebas totalmente independiente.</p></div>
+      <div><h4 data-i18n="cc3t">Desempeño y volumen</h4><p data-i18n="cc3p">Pruebas de carga y estrés para conocer la capacidad real de procesamiento y planificar el crecimiento.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="sec sec-paper" id="empresas">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <div><span class="label" data-i18n="enLabel">Soluciones empresariales</span><h2 data-i18n="entTitle">ERP y Salesforce, integrados con sus finanzas.</h2></div>
+      <p data-i18n="entLead">Implementamos y personalizamos las plataformas que su empresa ya utiliza y las conectamos con pagos, cobranzas y crédito para eliminar las cargas manuales.</p>
+    </div>
+    <div class="ent">
+      <div class="ent-card">
+        <h3>ERP</h3>
+        <p data-i18n="e1p">Acompañamos todo el ciclo de su sistema de gestión, desde la selección hasta el soporte.</p>
+        <ul>
+          <li data-i18n="e1a">Implementación y migración de datos</li>
+          <li data-i18n="e1b">Personalización de procesos financieros, compras e inventario</li>
+          <li data-i18n="e1c">Integraciones con bancos, pasarelas y sistemas propios</li>
+          <li data-i18n="e1d">Soporte y evolución continua</li>
+        </ul>
+        <div class="vendors"><span>SAP</span><span>Oracle</span><span>Odoo</span><span>Microsoft Dynamics</span></div>
+      </div>
+      <div class="ent-card">
+        <h3>Salesforce</h3>
+        <p data-i18n="e2p">Consultores con experiencia en ventas, servicio al cliente e integraciones.</p>
+        <ul>
+          <li data-i18n="e2a">Implementación y configuración de CRM</li>
+          <li data-i18n="e2b">Automatización de procesos comerciales y de servicio</li>
+          <li data-i18n="e2c">Integraciones con ERP, core bancario y plataformas de crédito</li>
+          <li data-i18n="e2d">Reportes y tableros para la dirección</li>
+        </ul>
+        <div class="vendors"><span>Sales Cloud</span><span>Service Cloud</span><span data-i18n="e2s">Integraciones</span></div>
+      </div>
+      <div class="bridge">
+        <div><strong>ERP</strong><small data-i18n="br1">Contabilidad y conciliación</small></div>
+        <span class="arrow"></span>
+        <div class="core"><strong>Corentworks</strong><small data-i18n="br2">APIs, eventos y orquestación</small></div>
+        <span class="arrow"></span>
+        <div><strong>CRM</strong><small data-i18n="br3">Clientes y solicitudes</small></div>
+      </div>
+      <p class="bridge-note" data-i18n="brNote">Cada cobro se concilia en el ERP y cada solicitud de crédito puede iniciarse en el CRM.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <div><span class="label" data-i18n="svLabel">Servicios</span><h2 data-i18n="svcTitle">De la consultoría a la implementación.</h2></div>
+      <p data-i18n="svcLead">Además de nuestras plataformas, construimos y modernizamos software a medida con el mismo equipo y los mismos estándares.</p>
+    </div>
+    <div class="svc">
+      <div><h3 data-i18n="s1t">Modernización de sistemas legacy</h3><p data-i18n="s1p">Migramos sistemas core a arquitecturas modernas, por etapas y sin detener la operación.</p></div>
+      <div><h3 data-i18n="s2t">Ingeniería de software</h3><p data-i18n="s2p">Backend, frontend, mobile, cloud y APIs con prácticas de calidad desde el primer sprint.</p></div>
+      <div><h3 data-i18n="s3t">Desarrollo de producto y MVP</h3><p data-i18n="s3p">Priorizamos casos de uso y llegamos a un producto funcional para validar con clientes reales.</p></div>
+      <div><h3 data-i18n="s4t">Modernización de datos</h3><p data-i18n="s4p">Pipelines, data warehouse y modelos preparados para reportes, analítica e IA.</p></div>
+      <div><h3 data-i18n="s5t">Diseño UX/UI</h3><p data-i18n="s5p">Experiencias simples para procesos financieros complejos, en web y app.</p></div>
+      <div><h3 data-i18n="s6t">Servicios gestionados</h3><p data-i18n="s6p">Operamos, monitoreamos y evolucionamos sus plataformas con acuerdos de servicio claros.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAMS -->
+<section class="sec sec-paper" id="equipos">
+  <div class="wrap">
+    <div class="teams-grid">
+      <div class="rise">
+        <span class="label" data-i18n="tmLabel">Equipos</span>
+        <div class="big">20</div>
+        <p class="big-cap" data-i18n="bigCap">especialistas en tecnología financiera y empresarial, disponibles para integrarse a su operación.</p>
+        <div class="roles"><span data-i18n="r1">Arquitectos</span><span>Backend</span><span>Frontend</span><span>Mobile</span><span>QA</span><span data-i18n="r3">Datos e IA</span><span>Salesforce</span><span>ERP</span><span data-i18n="r4">Product owners</span></div>
+      </div>
+      <div class="models">
+        <div class="model"><h3 data-i18n="m1t">Equipo dedicado</h3><p data-i18n="m1p">Un equipo completo, con líder técnico, que trabaja exclusivamente en su producto.</p></div>
+        <div class="model"><h3 data-i18n="m2t">Refuerzo de equipo</h3><p data-i18n="m2p">Especialistas que se integran a su equipo actual, con sus herramientas y su metodología.</p></div>
+        <div class="model"><h3 data-i18n="m3t">Proyecto llave en mano</h3><p data-i18n="m3p">Alcance, plazos y entregables definidos. Nosotros nos encargamos de la ejecución.</p></div>
+      </div>
+    </div>
+    <div class="why">
+      <div><h4 data-i18n="w1t">Misma zona horaria</h4><p data-i18n="w1p">Equipo nearshore en Latinoamérica, con horarios compatibles con Estados Unidos.</p></div>
+      <div><h4 data-i18n="w2t">Experiencia en sistemas financieros</h4><p data-i18n="w2p">Hemos construido cuentas, tarjetas, pagos, cobranzas y crédito que hoy operan en producción.</p></div>
+      <div><h4 data-i18n="w3t">Español e inglés</h4><p data-i18n="w3p">Trabajamos con equipos de negocio y técnicos en ambos idiomas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="sec" id="como">
+  <div class="wrap how">
+    <div class="rise">
+      <span class="label" data-i18n="hwLabel">Cómo trabajamos</span>
+      <h2 data-i18n="howTitle">Comunicación clara, entregas predecibles.</h2>
+      <p class="intro" data-i18n="howLead">Analizamos, desarrollamos e implementamos cada proyecto de principio a fin, con un responsable único y avances visibles en cada etapa.</p>
+      <div style="margin-top:32px" class="ind-wrap">
+        <h4 data-i18n="indTitle">Sectores que atendemos</h4>
+        <p style="color:var(--slate);margin-top:8px" data-i18n="indList">Bancos y credit unions, fintech, lenders e hipotecarias, retail y e-commerce, y empresas de todos los sectores.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><h3 data-i18n="pr1t">Diagnóstico</h3><p data-i18n="pr1p">Entendemos sus sistemas, volúmenes, regulación y prioridades.</p></li>
+      <li><h3 data-i18n="pr2t">Prototipo</h3><p data-i18n="pr2p">Validamos el flujo con una demo funcional antes de invertir en desarrollo.</p></li>
+      <li><h3 data-i18n="pr3t">Implementación</h3><p data-i18n="pr3p">Integramos por etapas, con entregas visibles cada pocas semanas.</p></li>
+      <li><h3 data-i18n="pr4t">Operación y soporte</h3><p data-i18n="pr4p">Monitoreamos, medimos y ampliamos la solución a medida que crece.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="rise">
+      <h2 data-i18n="ctTitle">Conversemos sobre su proyecto.</h2>
+      <p class="intro" data-i18n="ctLead">Una plataforma de crédito, pruebas con CoreTestX, una implementación de ERP o Salesforce, o un equipo para acelerar su hoja de ruta. Respondemos en un día hábil.</p>
+      <a class="mail" href="mailto:hello@corentworks.com">hello@corentworks.com</a>
+      <div class="offices"><span data-i18n="of1">Estados Unidos y Latinoamérica</span></div>
+    </div>
+    <form class="form" id="form" action="contact.php" method="post" novalidate>
+      <div class="field"><label for="f-name" data-i18n="fName">Nombre</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-email" data-i18n="fEmail">Email corporativo</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-company" data-i18n="fCompany">Empresa</label><input id="f-company" name="company" autocomplete="organization"></div>
+      <div class="field"><label for="f-interest" data-i18n="fInterest">Área de interés</label>
+        <select id="f-interest" name="interest">
+          <option data-i18n="o1">Plataformas fintech</option>
+          <option>CoreTestX</option>
+          <option>ERP</option>
+          <option>Salesforce</option>
+          <option data-i18n="o5">Equipos y servicios</option>
+          <option data-i18n="o7">Otro</option>
+        </select>
+      </div>
+      <div class="field full"><label for="f-msg" data-i18n="fMsg">Mensaje</label><textarea id="f-msg" name="message" required></textarea></div>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="lang" id="f-lang" value="es">
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit" data-i18n="fSend">Enviar consulta</button>
+        <p class="status" id="status" role="status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top" aria-label="Corentworks">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="5" width="54" height="54" rx="8" fill="#132C50"/><rect x="16" y="16" width="32" height="32" rx="4" fill="none" stroke="#5B82F0" stroke-width="5"/><rect x="27" y="27" width="10" height="10" rx="2" fill="#C9962B"/></svg>
+          <span>Corentworks</span>
+        </a>
+        <p class="tagline">Core systems, delivered right.</p>
+      </div>
+      <div><h4 data-i18n="fo1">Soluciones</h4><ul><li><a href="#fintech" data-i18n="u1t">Plataformas fintech</a></li><li><a href="#coretestx">CoreTestX</a></li><li><a href="#empresas">ERP</a></li><li><a href="#empresas">Salesforce</a></li></ul></div>
+      <div><h4 data-i18n="fo2">Empresa</h4><ul><li><a href="#servicios" data-i18n="nav3">Servicios</a></li><li><a href="#equipos" data-i18n="nav4">Equipos</a></li><li><a href="#como" data-i18n="nav5">Cómo trabajamos</a></li></ul></div>
+      <div><h4 data-i18n="fo3">Contacto</h4><ul><li><a href="mailto:hello@corentworks.com">hello@corentworks.com</a></li><li><a href="#contacto" data-i18n="heroCta1">Agendar una reunión</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© <span id="year">2026</span> Corentworks</span><span data-i18n="legal">Todos los derechos reservados.</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EN = {
+    skip:"Skip to content", nav1:"Fintech", nav2:"ERP & Salesforce", nav3:"Services", nav4:"Teams", nav5:"How we work", navCta:"Contact",
+    heroTitle:"Financial and enterprise technology for the Americas.",
+    heroLead:"We build lending, payments and collections platforms, test transactional systems with CoreTestX, implement ERP and Salesforce, and add expert teams to your operation across the United States and Latin America.",
+    heroCta1:"Schedule a meeting", heroCta2:"Explore our solutions",
+    cf1:"Time to decision", cf2:"Events", hs1:"business units", hs2:"specialists", hs3:"bilingual service",     unLabel:"Business units", unTitle:"Five ways to work with us.",
+    unLead:"Hire a single unit or combine them. All of them share the same team, the same experience with critical systems and the same quality standard.",
+    u1t:"Fintech platforms", u1p:"Lending, automatic debit, payments, risk and data intelligence.", more:"See platforms",
+    u2p:"QA testing for transactional systems and payment ecosystems.", more2:"See CoreTestX",
+    u3t:"ERP", u3p:"SAP, Oracle, Odoo and Microsoft Dynamics: implementation and support.", more3:"See ERP",
+    u4p:"CRM consulting, automation and integrations.", more4:"See Salesforce",
+    u5t:"Teams and services", u5p:"Custom development, modernization and nearshore specialists.", more5:"See teams",
+    fxLabel:"Fintech platforms", platTitle:"The full lending and payments lifecycle, in modules.",
+    platLead:"Deploy one module or the full platform, connected by API to the systems you already run. Select a stage to see its capabilities.",
+    st1:"Originate", st2:"Decide", st3:"Disburse", st4:"Collect", st5:"Analyze",
+    t1s:"Application, identity and income", t2s:"Scoring, fraud and limits", t3s:"Payments and money movement", t4s:"Automatic debit and delinquency", t5s:"AI, reporting and audit",
+    p1t:"Digital origination", p1p:"Borrowers apply in minutes and your team receives complete, verified files ready for a decision.",
+    p1m1:"Application and onboarding", p1m1p:"Branded digital applications for web and mobile.",
+    p1m2:"Identity and KYC", p1m2p:"Identity and document checks with the providers you choose.",
+    p1m3:"Income verification", p1m3p:"Bank and employment data added to the file automatically.",
+    p1m4:"Mortgage and HELOC", p1m4p:"Secured-lending flows: valuation, title and digital closing.",
+    p2t:"Decisioning and risk", p2p:"Configurable rules and explainable models that approve, decline or route to review, with the reason behind each decision.",
+    p2m1:"Scoring and delinquency prediction", p2m1p:"Score each customer by payment behavior and anticipate default risk.",
+    p2m2:"Fraud prevention", p2m2p:"Behavioral signals, approved risk lists and probabilistic models in real time.",
+    p2m3:"Transaction Limiter", p2m3p:"Limits by amount, frequency, channel or segment, checked before every transaction.",
+    p2m4:"Business rules engine", p2m4p:"Installments, rates, fees, discounts and rewards defined by the business.",
+    p3t:"Payments and money movement", p3p:"Disbursements, transfers and payments coordinated by an orchestrator that manages states, retries and reconciliation.",
+    p3m1:"Transaction orchestrator", p3m1p:"A common layer between channels and providers. Change providers without changing the channel.",
+    p3m2:"Accounts and transfers", p3m2p:"Balances, movements and transfers with end-to-end traceability.",
+    p3m3:"Bill pay and cards", p3m3p:"Bill payments, top-ups, and prepaid and debit card issuing and processing.",
+    p3m4:"Remittances", soon:"Coming soon", p3m4p:"Send and receive money through international providers.",
+    p4t:"Automated collections", p4p:"Installment plans that collect automatically, retry without double charging and notify on time.",
+    p4m1:"Automatic debit and credit", p4m1p:"Subscriptions and recurring or real-time charges, in multiple currencies.",
+    p4m2:"Delinquency and retries", p4m2p:"Grace periods, configurable penalties and retries throughout the day.",
+    p4m3:"Notifications and disputes", p4m3p:"Push and email alerts, and dispute handling per installment.",
+    p4m4:"Bulk plan upload", p4m4p:"Thousands of plans from Excel, with validation and duplicate control.",
+    p5t:"AI-powered data intelligence", p5p:"Sales, collections and products enriched with market context and turned into reports and alerts backed by traceable evidence.",
+    p5m1:"Executive reports", p5m1p:"What changed, why and in which segments, explained in plain language.",
+    p5m2:"Anomaly detection", p5m2p:"Alerts on sales, prices, inventory or payments that break the pattern.",
+    p5m3:"Assisted audit", p5m3p:"Prioritized exceptions with evidence ready for human review.",
+    p5m4:"Natural-language questions", p5m4p:"Business questions answered with data, filters and sources.",
+    debTitle:"Automatic debit that collects on time and never charges twice.",
+    debLead:"For banks and lenders that collect loans, cards and services in installments.",
+    d1t:"Enrollment and validation", d1p:"Create plans by API or file, with accounts and customers validated before the first charge.",
+    d2t:"Processing and recovery", d2p:"Daily collection, automatic retries and delinquency handling with rules per product.",
+    d3t:"Built-in metrics", d3p:"Installments collected, pending and past due by day, product and company, exportable to Excel.",
+    planTitle:"Plan 7502608 — personal loan", i1:"Installment 1", i2:"Installment 2", i3:"Installment 3", i4:"Installment 4",
+    paid:"Collected", retry:"Retry 2", pending:"Pending",
+    planNote:"If the account lacks funds, the installment stays pending and is retried. The plan only goes past due once the grace period ends.",
+    cxTitle:"Deep testing for the transactional core.",
+    cxLead:"CoreTestX is our platform for QA testing of transactional systems and critical payment ecosystems. Create, automate and run complex tests that simulate multiple channels and real-world scenarios, and reach production sooner with less risk.",
+    cb1t:"Lower operating costs", cb1p:"Run tests independently, reuse transactional test frameworks and catch defects before they reach production.",
+    cb2t:"Faster development", cb2p:"Automate QA testing and shorten development cycles to deliver business value sooner.",
+    cb3t:"Greater efficiency", cb3p:"Increase team productivity with fewer resources while keeping payment quality high.",
+    cb4t:"End-to-end payment testing", cb4p:"Covers any payment ecosystem or transaction switch without building your own test environments.",
+    suiteName:"Suite: POS and ATM authorizations", running:"Running", done:"Completed",
+    tc1:"EMV chip POS purchase", tc2:"ATM withdrawal with insufficient funds", tc3:"Reversal on authorizer timeout", tc4:"Instant transfer", tc5:"Card data in TLV", tc6:"Load: 500 transactions per second", perf:"Performance",
+    passed:"Passed", dur:"Duration",
+    cc1t:"Channel simulation", cc1p:"ATM, POS, EMV cards and international payment networks, using industry messaging standards.",
+    cc2t:"Authorizer simulation", cc2p:"Card networks, banking cores and local and international processors, simulated for a fully independent test ecosystem.",
+    cc3t:"Performance and volume", cc3p:"Load and stress testing to understand real processing capacity and plan for growth.",
+    enLabel:"Enterprise solutions", entTitle:"ERP and Salesforce, integrated with your finances.",
+    entLead:"We implement and customize the platforms your company already uses and connect them with payments, collections and lending to eliminate manual work.",
+    e1p:"We support the full lifecycle of your management system, from selection to support.",
+    e1a:"Implementation and data migration", e1b:"Customization of finance, procurement and inventory processes", e1c:"Integrations with banks, gateways and in-house systems", e1d:"Ongoing support and evolution",
+    e2p:"Consultants experienced in sales, customer service and integrations.",
+    e2a:"CRM implementation and configuration", e2b:"Sales and service process automation", e2c:"Integrations with ERP, banking core and lending platforms", e2d:"Executive reports and dashboards", e2s:"Integrations",
+    br1:"Accounting and reconciliation", br2:"APIs, events and orchestration", br3:"Customers and applications",
+    brNote:"Every collection reconciles in the ERP, and every credit application can start in the CRM.",
+    svLabel:"Services", svcTitle:"From consulting to implementation.",
+    svcLead:"Beyond our platforms, we build and modernize custom software with the same team and the same standards.",
+    s1t:"Legacy modernization", s1p:"We migrate core systems to modern architectures, in stages and without stopping operations.",
+    s2t:"Software engineering", s2p:"Backend, frontend, mobile, cloud and APIs with quality practices from the first sprint.",
+    s3t:"Product and MVP development", s3p:"We prioritize use cases and deliver a working product to validate with real customers.",
+    s4t:"Data modernization", s4p:"Pipelines, data warehouses and models ready for reporting, analytics and AI.",
+    s5t:"UX/UI design", s5p:"Simple experiences for complex financial processes, on web and mobile.",
+    s6t:"Managed services", s6p:"We run, monitor and evolve your platforms under clear service agreements.",
+    tmLabel:"Teams", bigCap:"specialists in financial and enterprise technology, ready to join your operation.",
+    r1:"Architects", r3:"Data and AI", r4:"Product owners",
+    m1t:"Dedicated team", m1p:"A full team with a tech lead, working exclusively on your product.",
+    m2t:"Team extension", m2p:"Specialists who join your current team, with your tools and methodology.",
+    m3t:"Turnkey project", m3p:"Defined scope, timeline and deliverables. We take care of execution.",
+    w1t:"Same time zone", w1p:"Nearshore team in Latin America, with hours that overlap the United States.",
+    w2t:"Financial systems experience", w2p:"We have built accounts, cards, payments, collections and lending that run in production today.",
+    w3t:"English and Spanish", w3p:"We work with business and technical teams in both languages.",
+    hwLabel:"How we work", howTitle:"Clear communication, predictable delivery.",
+    howLead:"We analyze, develop and implement every project from start to finish, with a single point of accountability and visible progress at every stage.",
+    indTitle:"Industries we serve", indList:"Banks and credit unions, fintech, lenders and mortgage companies, retail and e-commerce, and enterprises across industries.",
+    pr1t:"Assessment", pr1p:"We map your systems, volumes, regulation and priorities.",
+    pr2t:"Prototype", pr2p:"We validate the flow with a working demo before investing in development.",
+    pr3t:"Implementation", pr3p:"We integrate in stages, with visible releases every few weeks.",
+    pr4t:"Operations and support", pr4p:"We monitor, measure and extend the solution as you grow.",
+    ctTitle:"Let’s talk about your project.",
+    ctLead:"A lending platform, testing with CoreTestX, an ERP or Salesforce implementation, or a team to accelerate your roadmap. We reply within one business day.",
+    of1:"United States and Latin America",
+    fName:"Name", fEmail:"Work email", fCompany:"Company", fInterest:"Area of interest", fMsg:"Message", fSend:"Send inquiry",
+    o1:"Fintech platforms", o5:"Teams and services", o7:"Other",
+    fo1:"Solutions", fo2:"Company", fo3:"Contact", legal:"All rights reserved."
+  };
+  var MSG = {
+    es:{sending:"Enviando…", ok:"Recibimos su consulta. Le responderemos en un día hábil.", err:"No pudimos enviar el formulario. Escríbanos a hello@corentworks.com.", req:"Complete nombre, email y mensaje para enviar."},
+    en:{sending:"Sending…", ok:"We received your inquiry. We’ll reply within one business day.", err:"We couldn’t send the form. Email us at hello@corentworks.com.", req:"Add your name, email and message to send."}
+  };
+  var LOG = {
+    es:{id:"Solicitud 48213", title:"Línea de crédito con garantía", term:"36 cuotas", aria:"Ejemplo animado del ciclo de un crédito", ev:[
+      [0,"Solicitud recibida desde la app"],[0,"Identidad verificada"],[0,"Ingresos verificados"],
+      [1,"Score 742, riesgo bajo"],[1,"Antifraude: sin alertas"],[1,"Límite disponible: OK"],[1,"Aprobado con tasa 9.4%"],
+      [2,"Desembolso enviado"],[2,"Plan de 36 cuotas creado"],
+      [3,"Cuota 1 cobrada por débito automático"],[3,"Cuota 2 sin saldo, reintento programado",1],[3,"Cuota 2 cobrada en el reintento"],
+      [4,"Cartera actualizada en el reporte diario"],[4,"Conciliado en el ERP"]]},
+    en:{id:"Application 48213", title:"Home equity line of credit", term:"36 installments", aria:"Animated example of a loan lifecycle", ev:[
+      [0,"Application received from the app"],[0,"Identity verified"],[0,"Income verified"],
+      [1,"Score 742, low risk"],[1,"Fraud check: no alerts"],[1,"Available limit: OK"],[1,"Approved at 9.4% APR"],
+      [2,"Disbursement sent"],[2,"36-installment plan created"],
+      [3,"Installment 1 collected by automatic debit"],[3,"Installment 2 insufficient funds, retry scheduled",1],[3,"Installment 2 collected on retry"],
+      [4,"Portfolio updated in daily report"],[4,"Reconciled in the ERP"]]}
+  };
+
+  var ES = {}, nodes = document.querySelectorAll('[data-i18n]');
+  nodes.forEach(function(n){ var k=n.getAttribute('data-i18n'); if(!(k in ES)) ES[k]=n.innerHTML; });
+  ES.done = "Completada";
+  var lang = 'es';
+  function store(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function read(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  /* hero console */
+  var consoleEl=document.querySelector('.console'), logEl=document.getElementById('log'), stages=document.querySelectorAll('#rail .stage');
+  var clockEl=document.getElementById('clock'), countEl=document.getElementById('evCount');
+  var timer=null, ci=0, secs=0;
+  function setStage(s){ stages.forEach(function(el,idx){ el.classList.toggle('done',idx<s); el.classList.toggle('active',idx===s); }); }
+  function fmt(x){ var m=Math.floor(x/60), s=x%60; return (m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+  function addLine(ev){
+    var li=document.createElement('li'), dot=document.createElement('span'), tx=document.createElement('span'), tm=document.createElement('time');
+    dot.className='dot'+(ev[2]?' warn':''); tx.textContent=ev[1]; tm.textContent=fmt(secs);
+    li.appendChild(dot); li.appendChild(tx); li.appendChild(tm); logEl.appendChild(li);
+    while(logEl.children.length>6) logEl.removeChild(logEl.firstChild);
+  }
+  function step(){
+    var data=LOG[lang].ev;
+    if(ci>=data.length){ ci=0; secs=0; logEl.innerHTML=''; }
+    var ev=data[ci];
+    if(ev[0]<2){ secs+=7+(ci*3)%9; clockEl.textContent=fmt(secs); }
+    setStage(ev[0]); addLine(ev); ci++; countEl.textContent=ci;
+  }
+  function restartConsole(){
+    var L=LOG[lang];
+    document.getElementById('loanId').textContent=L.id; document.getElementById('loanTitle').textContent=L.title; document.getElementById('loanTerm').textContent=L.term;
+    consoleEl.setAttribute('aria-label',L.aria);
+    clearInterval(timer); ci=0; secs=0; logEl.innerHTML='';
+    if(reduce){ L.ev.slice(-6).forEach(addLine); setStage(4); countEl.textContent=L.ev.length; clockEl.textContent='01:12'; return; }
+    step(); timer=setInterval(step,1500);
+  }
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) clearInterval(timer); else if(!reduce){ clearInterval(timer); timer=setInterval(step,1500); } });
+
+  /* CoreTestX suite */
+  var suiteItems = document.querySelectorAll('#suite li'), passN=document.getElementById('passN'), durN=document.getElementById('durN'), suiteState=document.getElementById('suiteState');
+  var sIdx=0, sTimer=null, dur=0;
+  function suiteStep(){
+    if (sIdx===0){ suiteItems.forEach(function(li){ li.className=''; }); dur=0; suiteState.textContent=(lang==='en'?EN:ES).running; }
+    if (sIdx>0) suiteItems[sIdx-1].className='pass';
+    if (sIdx<suiteItems.length){ suiteItems[sIdx].className='run'; dur+=0.4+((sIdx*7)%5)/10; sIdx++; }
+    else { suiteState.textContent=(lang==='en'?EN:ES).done; sIdx=0; clearInterval(sTimer); setTimeout(startSuite,3200); }
+    passN.textContent=document.querySelectorAll('#suite li.pass').length; durN.textContent=dur.toFixed(1)+' s';
+  }
+  function startSuite(){ clearInterval(sTimer); if(reduce){ suiteItems.forEach(function(li){li.className='pass';}); passN.textContent=6; durN.textContent='4.2 s'; suiteState.textContent=(lang==='en'?EN:ES).done; return; } sIdx=0; suiteStep(); sTimer=setInterval(suiteStep,900); }
+  var suiteStarted=false;
+
+  function setLang(l){
+    lang=l; var d=l==='en'?EN:ES;
+    nodes.forEach(function(n){ var k=n.getAttribute('data-i18n'); if(d[k]!=null) n.innerHTML=d[k]; });
+    document.documentElement.lang=l;
+    document.title = l==='en' ? 'Corentworks — Financial and enterprise technology' : 'Corentworks — Tecnología financiera y empresarial';
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang===l); });
+    document.getElementById('f-lang').value=l;
+    store('cw-lang',l);
+    restartConsole();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+
+  /* nav */
+  var nav=document.getElementById('nav'), menuBtn=document.getElementById('menuBtn');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>10); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  menuBtn.addEventListener('click', function(){ var o=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',o); });
+  document.querySelectorAll('#navLinks a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded',false); }); });
+
+  /* tabs */
+  var tabs=Array.prototype.slice.call(document.querySelectorAll('.ctab'));
+  function select(t){ tabs.forEach(function(x){ var on=x===t, p=document.getElementById(x.getAttribute('aria-controls')); x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; p.hidden=!on; p.classList.toggle('show',on); }); }
+  tabs.forEach(function(t,idx){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){ var k=e.key,n=null; if(k==='ArrowDown'||k==='ArrowRight') n=tabs[(idx+1)%tabs.length]; if(k==='ArrowUp'||k==='ArrowLeft') n=tabs[(idx-1+tabs.length)%tabs.length]; if(n){ e.preventDefault(); select(n); n.focus(); } });
+  });
+
+  /* reveal */
+  var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add('in');
+      if(en.target.id==='plan') en.target.querySelectorAll('.bar i').forEach(function(b){ b.style.width=b.dataset.w+'%'; });
+      if(en.target.classList.contains('suite') && !suiteStarted){ suiteStarted=true; startSuite(); }
+      io.unobserve(en.target);
+    });
+  },{threshold:.2}) : null;
+  document.querySelectorAll('.rise, #plan, .suite').forEach(function(el){ if(io) io.observe(el); else el.classList.add('in'); });
+  if(!io){ document.querySelectorAll('#plan .bar i').forEach(function(b){ b.style.width=b.dataset.w+'%'; }); startSuite(); }
+
+  /* form */
+  var form=document.getElementById('form'), status=document.getElementById('status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); var m=MSG[lang], el=form.elements;
+    if(!el['name'].value.trim()||!el['email'].value.trim()||!el['message'].value.trim()){ status.className='status err'; status.textContent=m.req; return; }
+    status.className='status'; status.textContent=m.sending;
+    fetch(form.action,{method:'POST',body:new FormData(form)})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ if(d&&d.ok){ status.className='status ok'; status.textContent=m.ok; form.reset(); } else throw 0; })
+      .catch(function(){
+        var subj=encodeURIComponent((lang==='en'?'Website inquiry — ':'Consulta web — ')+(el['company'].value||el['name'].value));
+        var body=encodeURIComponent(el['name'].value+'\n'+el['email'].value+'\n'+el['company'].value+'\n'+el['interest'].value+'\n\n'+el['message'].value);
+        status.className='status'; status.textContent=m.sending;
+        window.location.href='mailto:hello@corentworks.com?subject='+subj+'&body='+body;
+      });
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+  var saved=read('cw-lang');
+  setLang(saved || ((navigator.language||'es').toLowerCase().indexOf('es')===0?'es':'en'));
+})();
+</script>
 </body>
 </html>
-
-<section style="margin-top: 80px; max-width: 900px;">
-  <h2>What we do</h2>
-
-  <p>
-    We partner with organizations to deliver critical systems where reliability,
-    scale, and execution matter.
-  </p>
-
-  <ul style="line-height: 1.8; padding-left: 20px;">
-    <li><strong>Core Platforms & Banking Systems</strong> — Core, transactional, and enterprise platforms.</li>
-    <li><strong>Product & Delivery Enablement</strong> — Product ownership, agile delivery, and execution.</li>
-    <li><strong>Technology & Architecture</strong> — Backend, frontend, mobile, cloud, APIs, and data.</li>
-  </ul>
-</section>
-
-<section style="margin-top: 100px; max-width: 900px;">
-  <h2>Let’s work together</h2>
-
-  <p>
-    If you’re modernizing core systems, scaling products, or improving delivery,
-    we’d love to talk.
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <a href="mailto:hello@corentworks.com">hello@corentworks.com</a>
-  </p>
-</section>
-
-
